@@ -1,4 +1,5 @@
 # NCAS for the Casio fx-CG50
+<img width="1668" height="943" alt="image" src="https://github.com/user-attachments/assets/ed147ecd-03cf-4eb8-99ab-d8708344fb34" />
 
 A native C++ natural-input worksheet for the full CG50 KhiCAS/Giac engine.
 
