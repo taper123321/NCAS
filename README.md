@@ -1,6 +1,6 @@
 # NCAS for the Casio fx-CG50
 
-A native C++ natural-input worksheet for the full CG50 KhiCAS/Giac engine. Made by **Nazar Heldyiev (slxsnale)**.
+A native C++ natural-input worksheet for the full CG50 KhiCAS/Giac engine..
 
 **Development release 0.4.1. Cross-compiled and host-tested; this binary has not been tested here on a physical calculator or emulator.**
 
