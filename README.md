@@ -10,8 +10,8 @@ A native C++ natural-input worksheet for the full CG50 KhiCAS/Giac engine.
 2. Connect your Casio CG50 via a mini-USB cable
 3. Press F1 on the Casio CG50.
 4. Copy **both** `calculator/NCAS.g3a` and `calculator/natcas.ac2` to the calculator drive's root, safely eject it, then open **NCAS**.
-**NOTE**
 
+**NOTE:**
 Always replace the matched pair together. Remove an old `NaturalCAS.g3a` launcher when upgrading; the companion retains its historical filename for loader compatibility.
 
 
