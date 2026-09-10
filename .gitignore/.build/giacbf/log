@@ -1,0 +1,114 @@
+sh3eb-elf-g++ -g -static -nostdlib -Tprizm.ld -Wl,--gc-sections,--print-memory-usage -Wl,-Map=khicas.map catalogfr.o helpfr.o ysym2poly.o kgausspol.o kthreaded.o zcsturm.o zmaple.o zrpn.o zmoyal.o kmisc.o zpermu.o input_parser.o ksymbolic.o index.o kmodpoly.o kmodfactor.o kezgcd.o yderive.o zsolve.o yintg.o zintgab.o zlin.o zseries.o ksubst.o zvecteur.o kglobal.o zifactor.o yalg_ext.o zgauss.o zti89.o zplot.o zplot3d.o zprog.o yunary.o zusual.o yidentificateur.o kgen.o zrisch.o input_lexer.o first.o zdesolve.o ztex.o zisom.o zquater.o zadd.o overclock.o qrcodegen.o cutils.o libbf.o  khelpfr.o fileGUI.o menuGUI.o textGUI.o fileProvider.o graphicsProvider.o stringsProvider.o zdisplay.o console.o main.o -L. -L/home/parisse/casio/mpmfxcg/lib -Wl,--start-group -lsupc++ -lmicropy -ltommath  -lustl -lm -lc -lgcc -Wl,--end-group -o khicas.elf
+Memory region         Used Size  Region Size  %age Used
+             rom:     2006972 B    2065152 B     97.18%
+             ram:      425772 B       432 KB     96.25%
+           ilram:          0 GB         4 KB      0.00%
+            r8c2:     2295068 B    2559996 B     89.65zmaple.o: In function `_ZN4giac8get_timeERiS0_':
+/home/parisse/casio/giacbf/zmaple.cc:453: undefined reference to `_RTC_GetTicks'
+zmaple.o: In function `_ZN4giac8set_timeEii':
+/home/parisse/casio/giacbf/zmaple.cc:470: undefined reference to `_RTC_SetDateTime'
+zmaple.o: In function `_ZN4giac5_timeERKNS_3genEPKNS_7contextE':
+/home/parisse/casio/giacbf/zmaple.cc:500: undefined reference to `_RTC_GetTicks'
+zprog.o: In function `_ZN4giac6_srandERKNS_3genEPKNS_7contextE':
+/home/parisse/casio/giacbf/zprog.cc:4370: undefined reference to `_RTC_GetTicks'
+zprog.o: In function `_ZN4giac10_monotonicERKNS_3genEPKNS_7contextE':
+/home/parisse/casio/giacbf/zprog.cc:9267: undefined reference to `_RTC_GetTicks'
+zdisplay.o: In function `_statuslinemsg':
+/home/parisse/casio/giacbf/zdisplay.cc:140: undefined reference to `_DefineStatusMessage'
+zdisplay.o: In function `_ZN4xcas7Graph2d4drawEv':
+/home/parisse/casio/giacbf/zdisplay.cc:5873: undefined reference to `_DefineStatusMessage'
+zdisplay.o: In function `_ZN4xcas7Graph2d2uiEv':
+/home/parisse/casio/giacbf/zdisplay.cc:7516: undefined reference to `_DefineStatusMessage'
+/home/parisse/casio/giacbf/zdisplay.cc:7516: undefined reference to `_GetSetupSetting'
+/home/parisse/casio/giacbf/zdisplay.cc:8217: undefined reference to `_RTC_GetTicks'
+/home/parisse/casio/giacbf/zdisplay.cc:8260: undefined reference to `_RTC_GetTicks'
+/home/parisse/casio/giacbf/zdisplay.cc:8332: undefined reference to `_RTC_GetTicks'
+/home/parisse/casio/giacbf/zdisplay.cc:8368: undefined reference to `_RTC_GetTicks'
+catalogfr.o: In function `_Z11reset_alphav':
+/home/parisse/casio/giacbf/catalogfr.cpp:69: undefined reference to `_SetSetupSetting'
+catalogfr.o: In function `_Z13doCatalogMenuPcS_iPKc':
+/home/parisse/casio/giacbf/catalogfr.cpp:846: undefined reference to `_SetSetupSetting'
+kthreaded.o: In function `_ZN4giac8wait_1msEi':
+/home/parisse/casio/giacbf/kthreaded.cc:70: undefined reference to `_OS_InnerWait_ms'
+kglobal.o: In function `_ZN4giac9set_abortEv':
+/home/parisse/casio/giacbf/kglobal.cc:186: undefined reference to `_Timer_Install'
+/home/parisse/casio/giacbf/kglobal.cc:186: undefined reference to `_Timer_Start'
+kglobal.o: In function `_ZN4giac11clear_abortEv':
+/home/parisse/casio/giacbf/kglobal.cc:193: undefined reference to `_Timer_Stop'
+/home/parisse/casio/giacbf/kglobal.cc:193: undefined reference to `_Timer_Deinstall'
+menuGUI.o: In function `_Z6doMenuP4MenuP12MenuItemIcon':
+/home/parisse/casio/giacbf/menuGUI.cpp:107: undefined reference to `_DefineStatusMessage'
+/home/parisse/casio/giacbf/menuGUI.cpp:38: undefined reference to `_SetSetupSetting'
+textGUI.o: In function `_Z10search_msgv':
+/home/parisse/casio/giacbf/textGUI.cpp:377: undefined reference to `_DefineStatusMessage'
+textGUI.o: In function `_Z11show_statusP8textAreaRKN4ustl6stringES4_':
+/home/parisse/casio/giacbf/textGUI.cpp:385: undefined reference to `_DefineStatusMessage'
+textGUI.o: In function `_Z11check_parseRKN4ustl6vectorI11textElementEEi':
+/home/parisse/casio/giacbf/textGUI.cpp:75: undefined reference to `_DefineStatusMessage'
+/home/parisse/casio/giacbf/textGUI.cpp:72: undefined reference to `_DefineStatusMessage'
+textGUI.o: In function `_Z11chk_replaceP8textAreaRKN4ustl6stringES4_':
+/home/parisse/casio/giacbf/textGUI.cpp:436: undefined reference to `_DefineStatusMessage'
+textGUI.o: In function `_Z10doTextAreaP8textArea':
+/home/parisse/casio/giacbf/textGUI.cpp:1106: undefined reference to `_GetSetupSetting'
+/home/parisse/casio/giacbf/textGUI.cpp:1417: undefined reference to `_SetSetupSetting'
+/home/parisse/casio/giacbf/textGUI.cpp:1519: undefined reference to `_DefineStatusMessage'
+/home/parisse/casio/giacbf/textGUI.cpp:1238: undefined reference to `_DefineStatusMessage'
+console.o: In function `_Z15set_xcas_statusv':
+/home/parisse/casio/giacbf/console.cc:100: undefined reference to `_DefineStatusMessage'
+console.o: In function `_Z14copy_clipboardRKN4ustl6stringEbb':
+/home/parisse/casio/giacbf/console.cc:273: undefined reference to `_DefineStatusMessage'
+console.o: In function `_Z9handle_f5v':
+/home/parisse/casio/giacbf/console.cc:1823: undefined reference to `_GetSetupSetting'
+/home/parisse/casio/giacbf/console.cc:1823: undefined reference to `_SetSetupSetting'
+console.o: In function `_Z19console_help_insertb':
+/home/parisse/casio/giacbf/console.cc:2250: undefined reference to `_SetSetupSetting'
+console.o: In function `_Z11keytostringiibPKN4giac7contextE':
+/home/parisse/casio/giacbf/console.cc:2191: undefined reference to `_OS_InnerWait_ms'
+console.o: In function `_Z9inputlinePKcS0_RN4ustl6stringEbi':
+/home/parisse/casio/giacbf/console.cc:389: undefined reference to `_GetSetupSetting'
+/home/parisse/casio/giacbf/console.cc:389: undefined reference to `_SetSetupSetting'
+console.o: In function `_Z12input_matrixb':
+/home/parisse/casio/giacbf/console.cc:560: undefined reference to `_SetSetupSetting'
+/home/parisse/casio/giacbf/console.cc:520: undefined reference to `_SetSetupSetting'
+console.o: In function `_Z14Console_GetKeyv':
+/home/parisse/casio/giacbf/console.cc:2840: undefined reference to `_GetSetupSetting'
+/home/parisse/casio/giacbf/console.cc:2728: undefined reference to `_SetQuitHandler'
+console.o: In function `_Z15Console_GetLinev':
+/home/parisse/casio/giacbf/console.cc:3641: undefined reference to `_SetSetupSetting'
+main.o: In function `_casiostatus':
+/home/parisse/casio/giacbf/main.cc:661: undefined reference to `_SetSetupSetting'
+main.o: In function `_Z16clear_menu_timerv':
+/home/parisse/casio/giacbf/main.cc:741: undefined reference to `_Timer_Stop'
+/home/parisse/casio/giacbf/main.cc:741: undefined reference to `_Timer_Deinstall'
+main.o: In function `_Z14set_menu_timerv':
+/home/parisse/casio/giacbf/main.cc:759: undefined reference to `_Timer_Install'
+/home/parisse/casio/giacbf/main.cc:759: undefined reference to `_Timer_Start'
+main.o: In function `_Z4savePKc':
+/home/parisse/casio/giacbf/main.cc:2545: undefined reference to `_DefineStatusMessage'
+main.o: In function `_in_ckgetkey':
+/home/parisse/casio/giacbf/main.cc:878: undefined reference to `_GetSetupSetting'
+/home/parisse/casio/giacbf/main.cc:878: undefined reference to `_SetSetupSetting'
+/home/parisse/casio/giacbf/main.cc:814: undefined reference to `_OS_InnerWait_ms'
+main.o: In function `_Z11displaylogov':
+/home/parisse/casio/giacbf/main.cc:2326: undefined reference to `_DefineStatusMessage'
+main.o: In function `_process_freeze':
+/home/parisse/casio/giacbf/main.cc:631: undefined reference to `_DefineStatusMessage'
+main.o: In function `_Z6do_runPKcRN4giac3genES3_':
+/home/parisse/casio/giacbf/main.cc:2282: undefined reference to `_SetQuitHandler'
+main.o: In function `_Z3eqwRKN4giac3genEb':
+/home/parisse/casio/giacbf/gen.h:562: undefined reference to `_DefineStatusMessage'
+/home/parisse/casio/giacbf/gen.h:562: undefined reference to `_GetSetupSetting'
+main.o: In function `_Z3eqwRKN4giac3genEb':
+/home/parisse/casio/giacbf/main.cc:1670: undefined reference to `_GetSetupSetting'
+main.o: In function `_Z5main1v':
+/home/parisse/casio/giacbf/main.cc:1419: undefined reference to `_SetQuitHandler'
+/home/parisse/casio/giacbf/main.cc:1419: undefined reference to `_RTC_GetTicks'
+/home/parisse/casio/mpmfxcg/lib/libc.a(stdlib.o): In function `_memerr_exit':
+stdlib.c:(.text.unlikely+0x13c): undefined reference to `_SetQuitHandler'
+./libmicropy.a(modion.o): In function `ion_readRTC':
+/home/parisse/casio/micropython-1.12/fxcg/modion.c:14: undefined reference to `_RTC_GetTicks'
+./libmicropy.a(modion.o): In function `ion_sleep':
+/home/parisse/casio/micropython-1.12/fxcg/modion.c:55: undefined reference to `_OS_InnerWait_ms'
+collect2: error: ld returned 1 exit status
+%
+make: *** [Makefile.mpm:83 : khicas.elf] Erreur 1

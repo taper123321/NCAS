@@ -1,0 +1,4 @@
+#! /bin/bash
+zip khicasio.zip khicas?0* emucas*g3a 
+scp khicasio.zip malherbe:public_html/casio
+scp khicas?0* emucas*g3a malherbe:public_html/casio/

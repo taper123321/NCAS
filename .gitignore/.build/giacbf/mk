@@ -1,0 +1,6 @@
+#! /bin/bash
+make
+/bin/cp khicas90.ac2 /shared/tmp
+/bin/cp khicas90.g3a /shared/tmp
+/bin/cp khicas90.882 ~/.wine/drive_c
+/bin/cp emucas90.g3a ~/.wine/drive_c

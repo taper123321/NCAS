@@ -1,0 +1,16 @@
+// SPDX-License-Identifier: GPL-3.0-or-later
+#ifndef NCAS_SYMBOLS_H
+#define NCAS_SYMBOLS_H
+#include "screen.h"
+namespace natural {
+enum MathSymbol { NO_SYMBOL, FRACTION_SYMBOL, POWER_SYMBOL, ROOT_SYMBOL, MATRIX_SYMBOL,
+ DERIVATIVE_SYMBOL, NTH_DERIVATIVE_SYMBOL, INTEGRAL_SYMBOL, DEFINITE_INTEGRAL_SYMBOL,
+ LIMIT_SYMBOL, SUM_SYMBOL, PRODUCT_SYMBOL, DETERMINANT_SYMBOL, INVERSE_SYMBOL,
+ TRANSPOSE_SYMBOL, IDENTITY_SYMBOL, DOT_SYMBOL, CROSS_SYMBOL, NORM_SYMBOL,
+ REAL_SYMBOL, IMAG_SYMBOL, MODULUS_SYMBOL, ARGUMENT_SYMBOL, CONJUGATE_SYMBOL,
+ CHOOSE_SYMBOL, MEAN_SYMBOL, POP_SD_SYMBOL, SAMPLE_SD_SYMBOL, PLOT_SYMBOL };
+MathSymbol toolbarSymbol(int action);
+// Draw in the existing 58 x 18 label area; all strokes share the maths font.
+void paintSymbol(Surface &s,MathSymbol symbol,int x,int y,unsigned short color);
+}
+#endif

@@ -1,0 +1,90 @@
+#ifndef _IOSTREAM
+#define _IOSTREAM
+#include "mistream.h"
+#include "mostream.h"
+#include "ustring.h"
+#include "uvector.h"
+#include "umap.h"
+#include <stdio.h>
+
+struct stdostream {
+};
+
+struct stdistream {
+};
+
+inline stdostream & operator << (stdostream & os,int i){
+  printf("%d",i);
+}
+
+inline stdostream & operator << (stdostream & os,unsigned i){
+  printf("%u",i);
+}
+
+inline stdostream & operator << (stdostream & os,char ch){
+  printf("%c",ch);
+}
+
+inline stdostream & operator << (stdostream & os,double d){
+  printf("%g",d);
+}
+
+inline stdostream & operator << (stdostream & os,const char * s){
+  printf("%s",s);
+}
+
+inline stdostream & operator << (stdostream & os,const ustl::string & s){
+  printf("%s",s.c_str());
+}
+
+template<class T>
+  stdostream & operator << (stdostream & os,const ustl::vector<T> & v){
+  size_t s=v.size();
+  os << "[";
+  for (size_t i=0;i<s;++i){
+    os << v[i] ;
+    if (i!=s-1)
+      os << ",";
+  }
+  os << "]";
+  return os;
+}
+
+template<class T,class U>
+  stdostream & operator << (stdostream & os,const ustl::map<T,U> & v){
+  os << "{";
+  typename ustl::map<T,U>::const_iterator it=v.begin(),itend=v.end();
+  for (;it!=itend;){
+    os << it->first << ":" << it->second ;
+    ++it;
+    if (it!=itend)
+      os << ",";
+  }
+  os << "}";
+  return os;
+}
+
+extern stdostream cout;
+
+inline stdistream & operator >> (stdistream & os,int & i){
+  scanf("%d",i);
+}
+
+inline stdistream & operator >> (stdistream & os,unsigned &i){
+  scanf("%u",&i);
+}
+
+inline stdistream & operator >> (stdistream & os,char & ch){
+  scanf("%c",&ch);
+}
+
+inline stdistream & operator >> (stdistream & os,double & d){
+  scanf("%g",&d);
+}
+
+inline stdistream & operator >> (stdistream & os,const char * s){
+  scanf("%s",s);
+}
+
+extern stdistream cin;
+#endif

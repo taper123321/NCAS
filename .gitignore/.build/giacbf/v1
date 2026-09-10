@@ -1,0 +1,118 @@
+  // plot solution of y'=f(x,y) [x0,y0] in current plot range
+  // OR [x,y]'=f(t,x,y) t0 x0 y0 in current plot range
+  // args = dy/dx, [x, y], [x0, y0]
+  // OR [dx/dt, dy/dt], [t, x, y], [t0, x0, y0]
+  static gen plotode(const vecteur & w,GIAC_CONTEXT){
+    vecteur v(w);
+    bool curve=true;
+    gen fp=v[0];
+    if (fp.is_symb_of_sommet(at_equal) && fp._SYMBptr->feuille[0].type==_INT_){
+      fp=fp._SYMBptr->feuille[1];
+      *logptr(contextptr) << "Warning, replacing plotode(" << v[0] << " by plotode(" << fp << '\n';
+    }
+    if (fp.type!=_VECT) // y'=f(x,y)
+      fp=makevecteur(plus_one,fp);
+    gen vars=v[1];
+    bool dim3=vars.type==_VECT && vars._VECTptr->size()==3;
+    if (abs_calc_mode(contextptr)==38)
+      dim3=false; // no 3-d rendering :-(
+    gen init=remove_at_pnt(v[2]);
+    if (init.type!=_VECT)
+      init=makevecteur(re(init,contextptr),im(init,contextptr));
+    gen t;
+    int s;
+    if (vars.type != _VECT || (s = int(vars._VECTptr->size()))<2)
+      return gensizeerr(contextptr);
+    if (s==3){
+      t=vars._VECTptr->front();
+      vars=makevecteur(vars[1],vars[2]);
+    }
+    else {
+      identificateur tt(" t");
+      t=tt;
+      if (s==2 && vars[0].is_symb_of_sommet(at_equal)){
+	v.push_back(vars[0]);
+	t=vars[0]._SYMBptr->feuille[0];
+	vars=makevecteur(t,vars[1]);
+      }
+    }
+    if (vars.type==_VECT && vars._VECTptr->size()==2 && vars._VECTptr->back().is_symb_of_sommet(at_equal))
+      vars=makevecteur(vars._VECTptr->front(),vars._VECTptr->back()._SYMBptr->feuille[0]);
+    v[1]=vars;
+    vecteur f=makevecteur(fp,(t.is_symb_of_sommet(at_equal)?t._SYMBptr->feuille._VECTptr->front():t),vars);
+    if (init.type != _VECT || (s = int(init._VECTptr->size()))<2)
+      return gensizeerr(contextptr);
+    vecteur & initv=*init._VECTptr;
+    gen t0=initv.front();
+    gen x0=t0;
+    if (s==3)
+      x0=initv[1];
+    gen y0=makevecteur(x0,initv.back());
+    double ym[2]={gnuplot_xmin,gnuplot_ymin},yM[2]={gnuplot_xmin,gnuplot_ymin};
+    double * ymin = 0;
+    double * ymax = 0;
+    double tstep=0,tmin=-1e300,tmax=1e300;
+    bool tminmax_defined,tstep_defined;
+    read_tmintmaxtstep(v,t,3,tmin,tmax,tstep,tminmax_defined,tstep_defined,contextptr);
+    if (tmin>tmax || tstep<=0)
+      return gensizeerr(gettext("Time"));
+#ifdef KHICAS
+    int maxstep=80;
+#else
+    int maxstep=500;
+#endif
+    if (tminmax_defined && tstep_defined)
+      maxstep=giacmax(maxstep,2*int((tmax-tmin)/tstep));
+    int vs=int(v.size());
+    for (int i=3;i<vs;++i){
+      if (readvar(v[i])==vars[0]){
+	if (readrange(v[i],gnuplot_xmin,gnuplot_xmax,v[i],ym[0],yM[0],contextptr)){
+	  ymin=ym;
+	  ymax=yM;
+	  v.erase(v.begin()+i);
+	  --vs;
+	}
+      }
+      if (readvar(v[i])==vars[1]){
+	if (readrange(v[i],gnuplot_xmin,gnuplot_xmax,v[i],ym[1],yM[1],contextptr)){
+	  ymin=ym;
+	  ymax=yM;
+	  v.erase(v.begin()+i);
+	  --vs;
+	}
+      }
+    }
+    if (dim3 && vs>3)
+      dim3=(v[3]!=at_plan);
+    vecteur res1v,resv;
+    if (tmin<0){
+      gen res1=odesolve(t0,tmin,f,y0,tstep,curve,ymin,ymax,maxstep,contextptr);
+      if (is_undef(res1)) return res1;
+      res1v=*res1._VECTptr;
+      std::reverse(res1v.begin(),res1v.end());
+    }
+    res1v.push_back(makevecteur(t0,y0));
+    if (tmax>0){
+      gen res2=odesolve(t0,tmax,f,y0,tstep,curve,ymin,ymax,maxstep,contextptr);
+      if (is_undef(res2)) return res2;
+      resv=mergevecteur(res1v,*res2._VECTptr);
+    }
+    else
+      resv=res1v;
+    // make the curve
+    const_iterateur it=resv.begin(),itend=resv.end();
+    vecteur res;
+    res.reserve(itend-it);
+    for (;it!=itend;++it){
+      if (it->type!=_VECT || it->_VECTptr->empty() || it->_VECTptr->back().type!=_VECT) 
+	continue;
+      vecteur tmp=*it->_VECTptr->back()._VECTptr;
+      if (tmp.size()!=2 || is_undef(tmp.front()) || is_undef(tmp.back()))
+	continue;
+      if (dim3)
+	res.push_back(gen(makevecteur(it->_VECTptr->front(),tmp.front(),tmp.back()),_POINT__VECT));
+      else
+	res.push_back(tmp.front()+cst_i*tmp.back());
+    }
+    return symb_pnt(gen(res,_GROUP__VECT),contextptr);
+  }

@@ -1,0 +1,60 @@
+{
+  "format": 1,
+  "retrieved": "2026-09-09",
+  "dependencies": [
+    {
+      "file": "giacbf.tgz",
+      "url": "https://www-fourier.univ-grenoble-alpes.fr/~parisse/casio/giacbf.tgz",
+      "bytes": 101097903,
+      "sha256": "58d3a8d45f2c13d8f63285baff4e1626321286c8f331e3379e9ab9872962a7f3"
+    },
+    {
+      "file": "casiolocal.tgz",
+      "url": "https://www-fourier.univ-grenoble-alpes.fr/~parisse/casio/casiolocal.tgz",
+      "bytes": 231810544,
+      "sha256": "4f58af04b5244b277b1b436d0c02dff5c3d8ac58784987431a25ca72f22a166c"
+    },
+    {
+      "file": "sdk.zip",
+      "url": "https://github.com/Jonimoose/libfxcg/releases/download/v0.6/PrizmSDK-win-0.6.zip",
+      "bytes": 48676515,
+      "sha256": "ace64fd40b21e456df4d1ea9b8fcdf35a3cc771e115448a3ef2976d8a6597e98"
+    },
+    {
+      "file": "libfxcg.tgz",
+      "url": "https://www-fourier.univ-grenoble-alpes.fr/~parisse/casio/libfxcg.tgz",
+      "bytes": 635744,
+      "sha256": "11165966b6a9b95e0f565ee2f8d16e49c0c4927ba9c8fcfcff9f56663b6a8bee"
+    },
+    {
+      "file": "tommath.tgz",
+      "url": "https://www-fourier.univ-grenoble-alpes.fr/~parisse/casio/tommath.tgz",
+      "bytes": 649916,
+      "sha256": "903be159af36e395a652e9cb444ccca8d974a3b4985c6f21d906ddf05465468a"
+    },
+    {
+      "file": "ustl.tar.gz",
+      "url": "https://www-fourier.univ-grenoble-alpes.fr/~parisse/casio/ustl.tar.gz",
+      "bytes": 258760,
+      "sha256": "c8e33ee42c05c334f9b622e01b09d7156714334f4d8b408a2043539e9c99cdf4"
+    },
+    {
+      "file": "giac.js",
+      "url": "https://www-fourier.univ-grenoble-alpes.fr/~parisse/casio/giac.js",
+      "bytes": 21320499,
+      "sha256": "9d8cb64d5743593567ec892029360e94a29e55e2e507b3983b8fe279ae19e437"
+    },
+    {
+      "file": "python90.tgz",
+      "url": "https://www-fourier.univ-grenoble-alpes.fr/~parisse/casio/python90.tgz",
+      "bytes": 3457220,
+      "sha256": "eb9fe06d21ad7bcffdc271a77eaa6554c784fce71a5e22da3a503ef697f6454c"
+    },
+    {
+      "file": "micropy.tgz",
+      "url": "https://www-fourier.univ-grenoble-alpes.fr/~parisse/casio/micropy.tgz",
+      "bytes": 8348567,
+      "sha256": "b95fbb71f18c0d0d1e4c3ab7d4a960fdf26f1fdffb052d8ea2d3dbc0305a4268"
+    }
+  ]
+}

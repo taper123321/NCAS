@@ -1,0 +1,64 @@
+#ifndef _FXCG_STDLIB_H
+#define _FXCG_STDLIB_H
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+extern volatile char ctrl_c,interrupted;
+
+#include <stddef.h>
+
+struct div_t
+{
+  int quot,rem;
+} ;
+#define ldiv_t div_t
+void abort();
+void abort2(int x);
+void alert(int x);
+int atexit ( void ( * function ) (void) );
+float  atof ( const char * str );
+int atoi ( const char * str );
+#define atol atoi
+void * bsearch ( const void * key, const void * base, size_t num, size_t size, int ( * comparator ) ( const void *, const void * ) );
+void * calloc ( size_t num, size_t size );
+struct div_t div ( int numerator, int denominator );
+char * getenv ( const char * name );
+long int labs ( long int n );
+  int sprint_int(char * s,int r);
+  void sprint_double(char * s,double d);
+
+
+// ldiv_t ldiv ( long int numerator, long int denominator );
+#define ldiv div
+double strtod ( const char * str, char ** endptr );
+unsigned long int strtoul ( const char * str, char ** endptr, int base );
+int system ( const char * command );
+// END
+int abs(int n);
+
+void free(void *p);
+void *malloc(size_t sz);
+void *realloc(void *p, size_t sz);
+
+/* Syscalls relating to the OS heap */
+extern void *sys_malloc(int size);
+extern void *sys_realloc(void *ptr, int newsize);
+extern void sys_free(void *ptr);
+
+int rand(void);
+void srand(unsigned seed);
+
+long strtol(const char *str, char **str_end, int base);
+void qsort(void *base, size_t nel, size_t width, int (*compar)(const void *, const void *));
+
+void exit(int status);
+// Even though this is non-standard, this is a syscall and this is the best spot for defining.
+void itoa( int value, unsigned char*result );
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif

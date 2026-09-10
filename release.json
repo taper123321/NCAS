@@ -1,0 +1,17 @@
+{
+  "name": "NCAS",
+  "version": "0.4.1",
+  "built": "2026-09-10",
+  "files": [
+    {
+      "file": "NCAS.g3a",
+      "bytes": 2054936,
+      "sha256": "cb23d54ddaf748ba41b982e7765971e38b02c97c763f63031ca66fe81e823b15"
+    },
+    {
+      "file": "natcas.ac2",
+      "bytes": 2365962,
+      "sha256": "e68df573943cf1d2428dc342ee0286817190fdb2ed66f5d11013c26197356c86"
+    }
+  ]
+}

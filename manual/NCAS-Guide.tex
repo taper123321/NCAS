@@ -1,0 +1,421 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,amsmath,amssymb,graphicx,xcolor,booktabs,tabularx,longtable,enumitem}
+\usepackage[margin=22mm,headheight=15pt]{geometry}
+\usepackage{fancyhdr,titlesec,xurl,hyperref}
+\definecolor{ink}{HTML}{193047}\definecolor{teal}{HTML}{008C94}\definecolor{pale}{HTML}{EAF5F3}
+\hypersetup{colorlinks=true,linkcolor=teal,urlcolor=teal,hypertexnames=false,pdftitle={NCAS User Manual}}
+\titleformat{\section}{\Large\bfseries\color{ink}}{\thesection}{0.7em}{}
+\titleformat{\subsection}{\large\bfseries\color{ink}}{\thesubsection}{0.7em}{}
+\setlength{\parindent}{0pt}\setlength{\parskip}{7pt}\setlist{nosep,leftmargin=1.5em,topsep=5pt}
+\setcounter{tocdepth}{1}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small\color{teal}NCAS}\fancyhead[R]{\small fx-CG50 | User manual}
+\fancyfoot[L]{\small Version 0.4.2}\fancyfoot[R]{\thepage}
+\renewcommand{\headrulewidth}{0.3pt}
+\newcommand{\key}[1]{\textsf{\fbox{\strut\scriptsize #1}}}
+\newcommand{\menu}[1]{\textsf{\color{teal}#1}}
+\newcommand{\note}[1]{\par\colorbox{pale}{\parbox{0.95\linewidth}{\small #1}}\par}
+\newcommand{\screen}[3][0.66]{\begin{center}\includegraphics[width=#1\linewidth]{images/#2.png}\\[4pt]{\small\color{ink}#3}\end{center}}
+\begin{document}
+\begin{titlepage}
+\vspace*{8mm}{\color{teal}\rule{\linewidth}{2pt}}\par
+{\Huge\bfseries\color{ink}NCAS}\par
+{\Large User manual for the Casio fx-CG50}\par
+\screen[0.86]{main-page2}{A startup menu.}
+\vspace{3mm}
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+\textbf{Calculator} & Casio fx-CG50\\
+\textbf{Files} & \texttt{NCAS.g3a} and \texttt{natcas.ac2}\\
+\textbf{Defaults} & Degrees, real domain, exact output, 10 displayed digits\\
+\textbf{Worksheet} & 32 retained calculations with editable inputs and dependent recalculation\\
+\textbf{Storage} & Calculator main memory, saved when switching applications through MENU\\
+\end{tabularx}
+\vfill
+\note{Install both files from the same release. This manual describes NCAS 0.4.2.}
+\end{titlepage}
+\tableofcontents\clearpage
+
+\section{Installation and first launch}
+NCAS is the new name of the NaturalCAS project. It is a native add-in using the full CG50 KhiCAS/Giac engine. It runs on the calculator without an Internet connection.
+
+\subsection{Install the matched pair}
+\begin{enumerate}
+\item Connect the fx-CG50 to the computer by USB and choose the calculator's flash/storage connection.
+\item Copy \texttt{NCAS.g3a} and \texttt{natcas.ac2} from the package's \texttt{calculator} folder into the calculator drive's root directory.
+\item Safely eject the drive, disconnect USB, and open \textbf{NCAS} from the main menu.
+\end{enumerate}
+Both files come from one link operation. Always replace both together; an older companion can be incompatible with a newer add-in. The companion keeps its historical filename for loader compatibility. When upgrading, remove the old \texttt{NaturalCAS.g3a} from the calculator so there is only one launcher for this companion.
+
+On first launch, a separate date/time setup screen follows. Enter the date and local 24-hour time and press \key{F6 SAVE}. The worksheet and preferences are saved to calculator main memory when you leave through MENU. An existing \texttt{natcas.cfg} is read once as a legacy preference source; NCAS no longer writes that file.
+
+\subsection{First-use checks}
+Try $5\div5=1$, $1/2+1/6=2/3$, and $\sin(30)=1/2$ in degrees. Switch to radians through Settings and check $\sin(\pi/6)=1/2$. Enter a $2\times2$ matrix and check its determinant.
+
+The package targets the fx-CG50. The inherited loader, OS checks and exam-mode guard remain present. NCAS does not automatically overclock the calculator.
+\clearpage
+
+\section{The calculation sheet}
+The main screen follows a familiar calculator layout. Inputs are left aligned; answers are right aligned underneath them. A slim teal marker identifies the selected input or result. A scrollbar appears when the sheet extends beyond the viewport.
+
+\screen[0.57]{worksheet}{Three calculations and a new input position, using Compact text.}
+
+\subsection{Read the header}
+\begin{tabularx}{\linewidth}{@{}lX@{}}\toprule
+Indicator & Meaning\\\midrule
+DEG / RAD & The angle unit selected for subsequent calculations.\\
+EXACT / DEC & The default result display preference.\\
+REAL / A+Bi / $r\angle\theta$ & Real, rectangular complex, or polar complex display.\\
+6D / 10D / 14D & Precision used when displaying approximate results.\\
+Date / clock & Local \texttt{DD/MM HH:MM}, with no year in the header. Refreshed on interaction.\\
+Shift / Alpha & Yellow S or red A after the battery; an underlined A means Alpha lock.\\
+Battery & Always leftmost. Zero to four bars follow measured supply voltage; an approximate level, not a charge percentage.\\
+Section & The entered branch or active template field, inside the existing header. Main-page scrolling leaves this blank.\\
+NCAS & Contrasting name badge, separated from status information by a vertical divider.\\\bottomrule
+\end{tabularx}
+
+Angle, output, domain and precision have individual boxes on one header line. Battery, date/time and the logo remain unboxed. Battery bands include hysteresis to reduce flicker; battery chemistry and load affect the reading.
+
+There is no permanent instructional text around the calculation area. Every toolbar page is 24 pixels high, leaving the same 168-pixel-high calculation viewport below the 22-pixel header. Labels are abbreviated or replaced with standard mathematical symbols. Errors slide over the worksheet in a red notification below the header at the right. They do not resize or move the sheet. A message disappears after a short pause or a key press; the key is then handled normally.
+
+\subsection{Start another calculation}
+After an answer, type a number to begin a new line. Typing an arithmetic operator starts the new line with \texttt{Ans}. Pressing \key{EXE} again opens a blank line. \menu{Jump > New line} does the same. \texttt{Ans} refers to the preceding executed answer in the sheet, even when an older line was previously selected.
+\clearpage
+
+\section{Scrolling, selecting and editing}
+\subsection{Browse the worksheet}
+After evaluation, the result is selected. Press \key{UP} to select its input; another \key{UP} selects the preceding calculation's result. \key{DOWN} moves in the other direction. No history dialog is involved. \menu{Jump > First} and \menu{Jump > Last} move directly to either end.
+
+If the selected input or answer is taller than the viewport, repeated vertical arrows first scroll through that object. At its boundary, browsing continues to the adjacent input or answer. This prevents large matrices from becoming inaccessible.
+
+\screen[0.46]{edit-history}{An earlier input is being edited while later calculations remain in the sheet.}
+
+\subsection{Edit a selected input}
+Press \key{LEFT} or \key{RIGHT} while browsing any calculation. Both enter its input editor: \key{LEFT} starts at the end, \key{RIGHT} at the beginning. Subsequent horizontal presses move through characters and templates. Press \key{EXE} to apply the edit and recalculate the sheet.
+
+While editing, UP/DOWN move within templates, then return to worksheet browsing at a structural boundary. DOWN can select the answer. An unfinished edit stays available: return and press LEFT/RIGHT to resume, or EXE to apply it. EDIT PENDING marks the selected row; its old answer remains unchanged until EXE. Finish or clear this edit before editing another input. To discard it, press \key{AC} to clear the entire input, then use \key{UP}/\key{DOWN} to browse. \key{EXIT} clears the input when the toolbar is at its main level. The executed version remains stored in the worksheet until you commit a replacement.
+
+\subsection{Wide expressions}
+The editor keeps the whole current input visible when it fits, including a new line below the previous viewport. For an input larger than the viewport, it follows the active field horizontally and vertically. To inspect a wide answer, choose \menu{Jump > Pan view}: all four arrows pan within that selected result. When editing an input, PAN moves the cursor and the viewport follows it. In either case \texttt{PAN} appears in the header. \key{EXE} leaves pan mode. \key{EXIT}, with the main toolbar displayed, clears the current input and leaves pan mode. This keeps the normal \key{LEFT}/\key{RIGHT} action available for entering input editing.
+
+
+\clearpage
+
+\section{Notation, modifiers and notifications}
+\subsection{Integer coefficients}
+Type $2\times x$ with the multiplication key; NCAS displays $2x$. The same rule applies to signed integer coefficients and powers such as $3x^2$. The multiplication token remains in the algebra expression, so calculations keep the same meaning. Other products, including $2\times3$ and decimal coefficients, retain the multiplication sign.
+\screen[0.58]{header-shift}{Integer coefficients appear naturally; the yellow S shows that Shift is active.}
+LEFT/RIGHT skip the hidden multiplication token. DEL immediately before the variable removes one coefficient digit; deleting the final digit also removes that multiplication token.
+
+\subsection{The header stays NCAS}
+The battery remains leftmost. SHIFT lights a yellow S and ALPHA lights a red A next to it, with the settings boxes shifted right. Alpha lock underlines A. The header stays one line high; the date, time and NCAS badge keep their places.
+
+
+\subsection{Temporary error overlays}
+An error notification slides in from the right, pauses briefly, then slides out. It overlays only the top-right worksheet area and reserves no space. Any key dismisses it immediately and is then processed normally.
+\screen[0.58]{notice-overlay}{The result and worksheet geometry stay in place while the notification is visible.}
+\clearpage
+
+\section{Recalculating an edited sheet}
+Editing an earlier line changes the meaning of later references to variables and \texttt{Ans}. NCAS therefore replays the calculation sequence in order. The marker moves down the sheet and the viewport follows each evaluated result.
+
+\begin{center}\begin{tabular}{lll}\toprule
+Input & Original answer & After changing $a:=2$ to $a:=4$\\\midrule
+\texttt{a:=2} & $2$ & $4$\\
+\texttt{a*3} & $6$ & $12$\\
+\texttt{ans()+a} & $8$ & $16$\\\bottomrule
+\end{tabular}\end{center}
+\screen[0.47]{replay}{The dependent lines now use the changed assignment.}
+
+\subsection{How dependencies are rebuilt}
+For an edit, NCAS restores the saved algebra checkpoint immediately before that row. It evaluates only the edited row and the rows below it. Earlier inputs are not executed again, so their random or state-dependent results stay unchanged. The checkpoint contains variables, preceding answers and the random-generator state. Appending a normal new line evaluates only that new line.
+
+Changed and later answers are marked pending before replay. If evaluation fails or is interrupted, replay stops on that line. Subsequent answers remain pending; they are not presented as current results. Correct the failed input and execute it to continue.
+
+Replay uses the currently selected angle and domain preferences. If you change these settings and then execute an edited line, all recalculated expressions use those preferences. Merely changing a setting does not silently execute existing input.
+
+\subsection{Deleting and clearing}
+\menu{Edit > Delete} immediately removes the last calculation, without confirmation. \menu{Edit > Undo} restores it during the current launch. The viewport moves to the preceding answer, including its input if both fit. Deleting the last row restores the algebra checkpoint before it.
+
+\menu{Edit > Clear} asks for confirmation in a popup before clearing the entire worksheet. This cannot be undone. The new sheet adopts the current algebra variables as its starting state; clearing the sheet does not purge them.
+
+The sheet retains the most recent 32 entries. Committing a 33rd removes the oldest row silently. Its algebra state becomes the new baseline, so later variable and Ans dependencies remain available. Invalid unfinished input does not evict a row.
+\clearpage
+
+\section{Saving and reopening the worksheet}
+\subsection{Save only when leaving through MENU}
+The worksheet stays in RAM while you type, calculate, edit, delete or use Undo. These actions perform no worksheet-storage writes. To retain your work, press \key{MENU} and select another application. NCAS saves through the operating system's app-exit hook at that point. Merely displaying MENU and returning without switching may not invoke this hook.
+
+Reopening NCAS restores the most recent saved worksheet automatically. An unfinished edit being browsed away from reopens as the active input. The saved record includes the 32 retained inputs, displayed and exact answers, the current unfinished input and selected field, preferences, and algebra checkpoints used for subsequent edits. Undo remains a facility of the current launch.
+
+\begin{enumerate}
+\item Calculate \texttt{a:=2}, then \texttt{a*3}. Leave an unfinished fraction on a new line if desired.
+\item Press MENU and open another application. Allow NCAS to finish its exit save.
+\item Reopen NCAS. The saved calculations and unfinished input should return.
+\item Clear or finish that draft, select the first calculation, change it to \texttt{a:=4}, and execute. The dependent answer becomes 12.
+\end{enumerate}
+
+\subsection{Calculator main memory}
+The record is stored as \texttt{@NATCAS/WORKSHT} in the calculator's main-memory storage (MCS), without separate worksheet files in USB storage. NCAS compresses the record only at exit and skips rewriting it when its contents are unchanged. Preferences also wait for that exit save; confirming the clock editor sets the hardware clock immediately.
+
+MCS space is shared with other calculator data. NCAS bounds its compressed record to 48 KiB and its uncompressed representation to 512 KiB. Very large algebra values or a nearly full main memory can prevent a save; NCAS reports the failure. It does not delete the existing record before asking the OS to overwrite it. Device testing of this MCS path remains outstanding.
+
+\note{Work since the last MENU app switch has not been saved. A crash, reset or loss of power before that switch can lose it. The first-use time confirmation is retained with the same exit save.}
+\clearpage
+
+\section{The hierarchical toolbar}
+The main toolbar pages cycle continuously: press F6 for the next page, then F6 again to return to the first. This does not enter a submenu or show a Tools heading. The six labels correspond to \key{F1}--\key{F6}. Opening a branch changes the same bottom toolbar; the calculation stays visible. In a submenu, \key{F1} goes back and \key{F6} advances to another page when more choices exist. \key{EXIT} also goes back. Returning to a parent restores its page.
+
+\screen[0.52]{functions}{Math offers a stacked-fraction control, powers, roots and symbols.}
+\screen[0.52]{algebra-toolbar}{The Algebra branch uses the same toolbar and worksheet.}
+
+\begin{tabularx}{\linewidth}{@{}lX@{}}\toprule
+Root branch & Contents\\\midrule
+Jump & First, last, new line, pan view.\\
+Edit & Undo, delete last calculation, clear field, clear sheet, use/store answer.\\
+Mat & $2\times2$, $3\times3$, $3\times1$, $2\times1$, custom dimensions, resize, operations, vectors and load.\\
+Math & Fraction, power, root, symbols; further pages contain Algebra, Solve, Number and Complex.\\
+Calc & Calculus, Probability, Statistics, Further maths; exact/decimal on the next page.\\
+Second main page & SETUP, GRAPH, CAT, APPS, VIEW; F6 returns to the first page.\\\bottomrule
+\end{tabularx}
+
+The complete original catalogue, graph views, application workspace and variable-name prompts use inherited screens. Routine guided operations use the worksheet toolbar. Settings has its own full-screen list. Labels use abbreviations such as PROB (Probability), STAT (Statistics), ALG (Algebra), OPS (matrix operations), SIZE (matrix resize), CAT (all commands) and VIEW (full result).
+\clearpage
+
+\section{Keys, brackets and mathematical notation}
+\begin{tabularx}{\linewidth}{@{}lX@{}}\toprule
+Key & Behaviour in an editable line\\\midrule
+Numbers, $+$, $-$, $\times$ & Insert arithmetic using the same bitmap alphabet and baseline.\\
+$\div$ & Insert an inline division sign.\\
+Fraction key & Insert a stacked numerator/denominator template.\\
+Power / square / root & Insert an exponent, square the preceding operand, or insert a radical. SHIFT with the indexed-root key opens the radicand and root-index fields.\\
+$(\;)$ & Insert only the opening or closing bracket you press.\\
+$\sin$, $\cos$, $\tan$, $\ln$, $\log$ & Insert the function name and an opening bracket; close it manually.\\
+\key{X,$\theta$,T} & Insert $x$.\\
+Arrows & Move through characters, templates and matrix cells.\\
+\key{DEL} & Delete a preceding character; remove an empty fraction or other empty structure, including from inside its field.\\
+\key{AC} & Clear the entire current input in one press, including nested templates. After a result, open a blank line.\\
+\key{EXIT} & Go back in a submenu. At the main toolbar, clear the whole current input.\\
+\key{EXE} & Execute the input and update dependent lines.\\
+\key{SHIFT + MENU} & Open Settings directly.\\\bottomrule
+\end{tabularx}
+
+\screen[0.61]{operators}{Multiplication uses $\times$; inline division and the fractional answer are distinct.}
+
+Typing $(5\div5$ leaves an open bracket. Execution is rejected until you type $)$. A closing bracket without its matching opening bracket is also rejected. Function templates chosen from the toolbar have fixed visible argument frames; their structure is separate from manually typed parentheses.
+
+Undo is available through \menu{Edit > Undo} or the calculator's Undo key mapping. It stores one edit and toggles redo when invoked again. It also restores the last calculation removed by Edit > Delete. It does not undo an entire replay or a confirmed Clear of the whole worksheet.
+\clearpage
+
+\section{Fractions, powers and roots}
+\subsection{Example: $\frac12+\frac16$}
+Press the physical fraction key, type $1$, press \key{DOWN}, and type $2$. Use \key{RIGHT} at the end of the denominator to leave the fraction. Type $+$ and repeat with numerator $1$ and denominator $6$. Press \key{EXE}; the exact answer is $2/3$.
+
+The same template is available under \menu{Math > Fraction}. Its button shows two boxes separated by a bar. The division key displays $\div$ in the input; it does not create two boxes. NCAS preserves this distinction when recalling an input for editing.
+
+\screen[0.48]{fraction-edit}{An unfinished denominator is a visible editable field.}
+
+\subsection{Capture the preceding operand}
+Typing $12$, then pressing the fraction key, captures $12$ as the numerator and moves into the denominator. Typing $x+12$, then fraction, captures only $12$. To put $x+12$ entirely above a fraction bar, insert the fraction first and enter $x+12$ in its numerator, or manually group $(x+12)$ before applying the fraction key.
+
+\subsection{Powers and precedence}
+The power key captures the preceding operand as its base. For $2x^2$, type $2x$ and square; only $x$ is squared. To square the product, enter $(2x)$ and square. Standard precedence gives $-x^2=-(x^2)$; use $(-x)^2$ when the negative value is the base.
+
+Roots use a radical and an editable field. The indexed-root shortcut adds an index field: enter 8 under the radical, press UP, and enter 3 for $\sqrt[3]{8}=2$. DOWN returns to the radicand. Nested templates remain structural; empty required fields stop execution and receive the cursor.
+
+The $e^x$ and $10^x$ shortcuts insert their base with an empty exponent. They do not insert a visible \texttt{exp()} call. DEL inside a wholly empty template removes its layout; filled neighbouring fields are preserved.
+
+\subsection{Exact constants}
+Use the physical $\pi$ and imaginary-unit keys or \menu{Math > Symbols}. Integer and rational input stays exact when possible. Decimal literals request approximate arithmetic; choosing Exact output cannot recover an original rational value from an already approximate number.
+\clearpage
+
+\section{Natural mathematical symbols}
+NCAS uses conventional notation where the operation has a clear standard form. The engine still receives its normal command; you edit the visual fields rather than needing to type that syntax.
+
+\screen[0.55]{sigma-natural}{Summation has an upper bound, lower index and expression.}
+\screen[0.55]{exp-entry}{The exponential shortcut starts with an empty superscript field.}
+
+Supported layouts include $\sum$, $\prod$, $\lim_{x\to a}$, $d^n/dx^n$, integrals, radicals, $e^x$, absolute value and determinant bars, norm bars, a conjugate overbar, inverse and transpose powers, $I_n$, binomial coefficients, and vector dot/cross products. Commands without a standard unambiguous symbol retain their names.
+
+Exact surd-containing answers pass through Giac's algebraic normalisation before display. For example, $1/\sqrt2$ displays as $\sqrt2/2$. This also applies to individual matrix entries. Approximate output uses the selected decimal precision; symbolic branch restrictions still follow Giac's domain rules.
+\clearpage
+
+\section{Matrices in the main input line}
+\subsection{Insert and edit}
+Open \menu{Mat} for $2\times2$, $3\times3$, $3\times1$ and $2\times1$ presets. On its next page, \menu{mXn} opens a small dimensions popup. Enter rows and columns from 1 to 6, then choose F6 INSERT; EXE advances from rows to columns and then inserts. F1 or EXIT cancels.
+
+Only dimensions use the popup. Every cell is then editable in the main worksheet and may contain a number, fraction, radical or expression. The physical matrix key inserts a $2\times2$ grid.
+
+\screen[0.56]{matrix-presets}{The four common matrix presets share the original toolbar size.}
+At a cell boundary, \key{RIGHT} moves to the next cell in row order. \key{UP}/\key{DOWN} move vertically. Type $1$, \key{RIGHT}, $2$, \key{RIGHT}, $3$, \key{RIGHT}, $4$ to build
+\[\begin{pmatrix}1&2\\3&4\end{pmatrix}.\]
+To leave the grid while keeping it, move right out of its last cell. EXIT at the main toolbar clears the whole input. You can then enter an operator and another matrix in the same expression.
+
+\subsection{Resize in place}
+Move into the matrix and choose \menu{Mat > Resize}. The toolbar becomes \menu{+ Row}, \menu{- Row}, \menu{+ Column}, \menu{- Column}. Grids support 1--6 rows and 1--6 columns, including row and column vectors. New cells must be filled before execution.
+
+Removing a non-empty last row or column is refused. Clear those edge cells first. Each resize can be undone through \menu{Edit > Undo}. To clear or delete the entire worksheet line, use the separate Edit controls.
+
+\subsection{Stored matrices}
+\menu{Mat > Load variable} asks for a name and places a copy of its matrix on a new input line. Editing the copy does not update the variable until you store it. \menu{Edit > Store answer} creates a visible store calculation, so later replay includes that assignment.
+\clearpage
+
+\section{Large matrices and matrix operations}
+Matrix answers are recognised as grids, including the engine's matrix-prefixed/list representation. Inputs and answers occupy independent vertical regions. NCAS does not shrink a large matrix just to force both onto the same screen. After evaluating a tall input, the viewport moves to the beginning of its answer. Press \key{UP} to return to the input.
+
+\screen[0.58]{large-result}{A result larger than the screen: scroll down to see its remaining rows.}
+
+\subsection{Determinant and inverse}
+Enter a matrix and choose \menu{Mat > Operations > Det}. The existing input becomes the operation's first argument. For
+\[A=\begin{pmatrix}1&2\\3&4\end{pmatrix},\qquad \det A=-2,\qquad
+A^{-1}=\begin{pmatrix}-2&1\\\tfrac32&-\tfrac12\end{pmatrix}.\]
+The same branch offers transpose, row reduction, rank, eigenvalues, eigenvectors, identity matrix, characteristic polynomial and LU decomposition. Its pages are reached with \key{F6}.
+
+The characteristic polynomial of this example is $x^2-5x-2$. An inverse requires a square nonsingular matrix. Interpret decomposition and eigenvector output using the engine's command help: their returned shapes and ordering follow Giac conventions.
+
+\subsection{Products and vectors}
+Matrix multiplication uses the ordinary $\times$ key:
+\[\begin{pmatrix}1&2\\3&4\end{pmatrix}\begin{pmatrix}2&0\\1&2\end{pmatrix}
+=\begin{pmatrix}4&4\\10&8\end{pmatrix}.\]
+\menu{Mat > Vectors} includes dot product, cross product and magnitude. For $[1,2,3]$ and $[4,5,6]$, the dot product is 32 and the cross product is $[-3,6,-3]$.
+\clearpage
+
+\section{Settings}
+Press \key{SHIFT + MENU} (the physical SET UP shortcut), or choose \menu{SETUP} on the second main toolbar page. A separate full-screen Settings list opens. Use \key{UP}/\key{DOWN} to select a row, then \key{LEFT}/\key{RIGHT} or \key{EXE} to change it. F5/F6 also change the selected value. The header updates immediately. \key{EXIT} or F1 returns to the unchanged toolbar page and worksheet.
+
+\screen[0.62]{settings}{Settings has a separate list screen, with an active row highlight.}
+\begin{tabularx}{\linewidth}{@{}lX@{}}\toprule
+Preference & Choices and effect\\\midrule
+Angle & Degrees or radians. Used for subsequent evaluation.\\
+Domain & REAL, rectangular A+Bi, or polar $r\angle\theta$. Both complex formats enable complex evaluation.\\
+Output & Exact or decimal display of stored valid answers.\\
+Digits & 6, 10 or 14 displayed digits for approximate output.\\
+Text size & Normal or Compact. Reflows the worksheet.\\
+Date/time & Open the date and local time editor.\\\bottomrule
+\end{tabularx}
+
+Preferences take effect immediately in RAM and are saved only on a MENU app switch. A save failure does not revert the current in-memory settings. No function silently changes the angle unit. Select radians explicitly for conventional trigonometric calculus, Taylor series and the supplied polar/parametric starters.
+
+Changing the angle or domain does not execute existing inputs. Complex answers can be reformatted between rectangular and polar display; polar angles use the selected angle unit. A subsequent edited execution recalculates only that row and those below it using the new preferences. Output and digits also reformat valid answers without rerunning input.
+
+The calculator's fraction/decimal display toggle, or \menu{Calc > Exact / decimal}, changes the selected answer's representation. The header's EXACT/DEC indicator describes the default display preference; a one-answer toggle does not change that preference.
+
+\note{In degrees, $\sin(30)=1/2$. In radians, use $\sin(\pi/6)=1/2$. A calculus expression involving trigonometric functions should be interpreted using the angle setting you deliberately selected.}
+\clearpage
+
+\section{Date and time}
+\screen[0.65]{clock-setup}{First launch asks for a date and local 24-hour time.}
+The first installation or an upgrade from an earlier configuration opens this screen once. The starting values come from the calculator's clock when valid. Check them and enter your local date and time. The year is needed to validate leap days; it is never shown in the calculation header.
+
+\begin{enumerate}
+\item Use UP/DOWN to select Day, Month, Year, Hour or Minute.
+\item Type digits to replace the selected field. LEFT/RIGHT adjust it by one; DEL removes the last digit. AC clears the selected setup field.
+\item EXE advances to the next field. At Minute, EXE saves. F6 SAVE saves from any row.
+\item Invalid dates, years outside 2000--2099, hours outside 0--23 or minutes outside 0--59 are rejected. Correct the highlighted setup values and save again.
+\end{enumerate}
+After initial setup, use Settings > Date/time to correct the clock. EXIT or F1 cancels an optional correction without changing the clock. The first-use screen requires a valid confirmed date and time before entering the worksheet.
+
+The app writes the calculator's hardware RTC using the inherited OS syscall. It keeps time between launches while the RTC is powered. The confirmation flag is retained in main memory at the next MENU app switch; the date is not overwritten at every launch. The header reads the RTC when the screen is refreshed, including on key presses, and displays \texttt{DD/MM HH:MM}. This release does not redraw the header while waiting indefinitely for a key. Adjust local time manually after a daylight-saving change or a battery reset.
+\clearpage
+
+\section{Algebra and equation solving}
+\subsection{Labelled templates}
+\menu{Math > Algebra} and \menu{Math > Solve} are on Math's next toolbar page. Choose an operation to wrap the current input as its first argument. Additional parameters appear as fields with sensible starter values where available. The header identifies the active field.
+
+Use arrows to move among fields, \menu{EDIT > FIELD} to clear just the active field, and \key{EXE} to evaluate the complete expression. A command chosen while browsing an earlier calculation edits that selected input; use \menu{Jump > New line} first when you want a separate calculation.
+
+\begin{tabularx}{\linewidth}{@{}lXX@{}}\toprule
+Operation & Example & Result\\\midrule
+Expand & $(x+1)^3$ & $x^3+3x^2+3x+1$\\
+Factorise & $x^2-5x+6$ & $(x-2)(x-3)$\\
+Simplify & $(x^2-1)/(x-1)$ & $x+1$, with the original restriction $x\ne1$\\
+Substitute & $x^2+1$, variable $x$, value $3$ & $10$\\
+Solve & $x^2-5x+6=0$, variable $x$ & Solutions $2,3$\\
+Linear system & $[x+y=3,x-y=1]$, $[x,y]$ & $x=2$, $y=1$\\
+Coefficient & $x^3+2x^2$, variable $x$, power $2$ & $2$\\\bottomrule
+\end{tabularx}
+
+\subsection{Choose an appropriate solver}
+\menu{Solve} requests symbolic solutions. \menu{Numerical solve} uses a starting value such as $x=1.0$; that value can affect which root is found. \menu{Complex solve} allows complex solutions. Polynomial roots provides a numerical polynomial-root route.
+
+Solutions and factored forms must still be interpreted in the original domain. Simplifying a rational expression does not remove a restriction caused by a zero denominator. Check interval endpoints and extraneous roots where a transformation can change the problem's domain.
+
+\subsection{Assignments and answer reuse}
+An assignment such as \texttt{a:=4} becomes a visible worksheet entry and is replayed when earlier work changes. The guided \menu{Store answer} action creates an explicit assignment line. \menu{Use answer} copies the selected exact answer into a new editable input; it is a value copy rather than a continuing \texttt{Ans} reference.
+\clearpage
+
+\section{Calculus and further mathematics}
+\subsection{Differentiation and integration}
+Choose \menu{Calc > Calculus}. First and nth derivatives, definite and indefinite integrals, sums, products and limits have natural mathematical layouts.
+\[\frac{d}{dx}(x^3-3x)=3x^2-3,\qquad \int_0^3x^2\,dx=9.\]
+\screen[0.57]{calculus}{The derivative operator uses the same font family as the expression.}
+An indefinite integral returns an antiderivative; include an arbitrary constant when writing a general mathematical answer. A definite integral is signed area. Split intervals or integrate an absolute value when a question asks for geometric area across a sign change.
+
+\subsection{Additional templates}
+\begin{tabularx}{\linewidth}{@{}lX@{}}\toprule
+Operation & Example and interpretation\\\midrule
+Nth derivative & Expression, variable and derivative order.\\
+Limit & $\sin x/x$, $x=0$, in radians gives $1$.\\
+Taylor series & $\sin x$ about $0$, order 5, in radians gives $x-x^3/6+x^5/120$ with the engine's remainder term.\\
+Sum & $k^2$, index $k$, from 1 to $n$ gives $n(n+1)(2n+1)/6$.\\
+Differential equation & $y'=2y$ gives a family proportional to $e^{2x}$.\\
+Recurrence & $u(n+1)=2u(n)+3$, $u(0)=1$ gives $4\cdot2^n-3$.\\\bottomrule
+\end{tabularx}
+
+\menu{Calc > Further maths} includes stationary coordinates, roots of unity and hyperbolic functions. The stationary-point starter solves $3x^2-3=0$; substitute $x=\pm1$ into the original function and classify the points separately. \menu{Math > Complex} includes parts, conjugate, modulus, argument and factorisation.
+\clearpage
+
+\section{Probability, statistics and graphs}
+\subsection{Probability}
+\menu{Calc > Probability} gives named fields for each distribution:
+\begin{itemize}
+\item Binomial $P(X=k)$: trials $n$, probability $p$, count $k$. With $n=10$, $p=1/2$, $k=3$, the result is $15/128=0.1171875$.
+\item Binomial $P(X\le k)$: the same parameters give $11/64=0.171875$.
+\item Normal cumulative: mean, standard deviation and upper value. Standard normal at $1.96$ gives approximately $0.9750021$.
+\item Normal interval: mean, standard deviation, lower and upper values. Standard normal between $-1.96$ and $1.96$ gives approximately $0.9500042$.
+\item Inverse normal: mean, standard deviation and cumulative probability. At probability $0.975$, standard normal gives approximately $1.959964$.
+\item Poisson probability and cumulative probability: mean $\lambda$ and count $k$.
+\item Combinations: $n$ and $r$ for $\binom nr$.
+\end{itemize}
+Use standard deviation rather than variance in normal-distribution fields. For a discrete upper tail, check the boundary: $P(X\ge4)=1-P(X\le3)$.
+
+\subsection{Statistics}
+\menu{Calc > Statistics} includes mean, median, population standard deviation, sample standard deviation and linear regression. Use a list such as \texttt{[2,4,6,8]}. Its mean and median are 5, population standard deviation is $\sqrt5$, and sample standard deviation is $\sqrt{20/3}$.
+
+The inherited engine calls these standard deviations \texttt{stddev} and \texttt{stddevp}, respectively. The menu labels describe their meaning. Linear regression takes equal-length $x$ and $y$ lists; paired entries must describe the same observation. Returned parameters follow the engine's command-help conventions.
+
+\subsection{Graphs}
+\menu{GRAPH} on the second main page includes $y=f(x)$, parametric, polar, implicit and 3D plots. The guided fields create the expression, then the retained KhiCAS graph viewer opens. Its controls remain the upstream controls; \key{EXIT} returns from the graph view. The worksheet identifies a saved plot as \texttt{Graph (VIEW)}; select it and choose VIEW to reopen the graph.
+
+The parametric and polar starters use multiples of $\pi$ as parameter bounds. Choose radians explicitly before using those starters. After opening a graph, use the graph viewer controls; EXIT returns to the worksheet.
+\clearpage
+
+\section{Full engine access and practical limits}
+\subsection{Original applications}
+\menu{CAT} on the second main page opens the original KhiCAS catalogue. Insertions remain literal command text; close any inserted opening bracket yourself. Command help describes uncommon argument lists and specialised syntax. The complete mathematical engine remains linked, beyond the 71 guided operations.
+
+\menu{APPS} asks before switching to the original KhiCAS console and its application menus. Cancel is selected initially. F1, EXIT or AC cancels; F6 confirms. The popup explains that the original menus and controls differ.
+
+To return from the inherited workspace, use EXIT until you reach its calculation prompt, clear any unfinished input with AC, type 0 and press EXE. NCAS opens at the next input cycle. Your NCAS worksheet remains in RAM during this switch. If you opened a separate standalone KhiCAS add-in, use MENU and select NCAS instead.
+
+\subsection{Replay boundaries}
+The current sheet's baseline is captured when it starts. Variable changes made outside that sheet are not added as hidden dependencies: replay restores the sheet baseline. Start a new sheet after external workspace changes when you want those changes to become its starting values. Program commands with file, interactive or other side effects are better run in the original workspace; replay can repeat side effects and changing external input cannot be made deterministic by restoring variables.
+
+\subsection{Operating limits}
+\begin{itemize}
+\item The newest 32 worksheet entries, with silent eviction of the oldest on the next commit; 511 usable editor nodes; maximum tree depth 24.
+\item Inline matrices: 1--6 rows and columns. Larger structured objects use the full result viewer or original workspace.
+\item Input and rendered-result source buffers: 2048 bytes including the terminator. Lossless input-layout storage: 4096 bytes per entry. Oversized input is rejected; a too-large result offers the full viewer.
+\item One edit undo/redo level, plus last-row deletion undo, during the current launch. MENU exit saves the worksheet and unfinished input to MCS; this record has the 48 KiB compressed/512 KiB raw bounds described earlier. Exotic low-level Giac objects may not round-trip through the general symbolic fallback.
+\item Two text sizes and English labels. No automatic step-by-step derivations or claim to cover every examination syllabus.
+\item Complex or long-running calculations may take time. AC requests interruption during a calculation, but some engine operations may not stop immediately.
+\end{itemize}
+
+Errors stop replay and leave later lines pending. \key{AC} invokes the inherited engine interruption mechanism during computation; not every possible long-running operation is guaranteed to be immediately interruptible.
+\clearpage
+\appendix
+\section{Guided operation reference}
+All 71 operations below are reachable through the bottom toolbar. Names may be shortened on a soft key; the selected template and its active field are identified in the header. Parameters follow the underlying Giac command order.
+\input{operations.tex}
+\note{For an assessment, follow its calculator rules. A CG50 running a CAS add-in may be treated differently from an unmodified calculator. The inherited exam-mode guard remains in the application.}
+\end{document}

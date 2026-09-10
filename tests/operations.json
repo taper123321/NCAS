@@ -1,0 +1,980 @@
+[
+  {
+    "category": "Algebra",
+    "title": "Simplify",
+    "command": "simplify",
+    "count": 1,
+    "defaults": [
+      ""
+    ],
+    "fields": [
+      "Expression"
+    ]
+  },
+  {
+    "category": "Algebra",
+    "title": "Expand brackets",
+    "command": "expand",
+    "count": 1,
+    "defaults": [
+      ""
+    ],
+    "fields": [
+      "Expression"
+    ]
+  },
+  {
+    "category": "Algebra",
+    "title": "Factorise",
+    "command": "factor",
+    "count": 1,
+    "defaults": [
+      ""
+    ],
+    "fields": [
+      "Expression"
+    ]
+  },
+  {
+    "category": "Algebra",
+    "title": "Partial fractions",
+    "command": "partfrac",
+    "count": 2,
+    "defaults": [
+      "",
+      "x"
+    ],
+    "fields": [
+      "Fraction",
+      "Variable"
+    ]
+  },
+  {
+    "category": "Algebra",
+    "title": "Collect powers",
+    "command": "collect",
+    "count": 2,
+    "defaults": [
+      "",
+      "x"
+    ],
+    "fields": [
+      "Expression",
+      "Variable"
+    ]
+  },
+  {
+    "category": "Algebra",
+    "title": "Substitute a value",
+    "command": "subst",
+    "count": 3,
+    "defaults": [
+      "",
+      "x",
+      ""
+    ],
+    "fields": [
+      "Expression",
+      "Variable",
+      "Value"
+    ]
+  },
+  {
+    "category": "Algebra",
+    "title": "Polynomial remainder",
+    "command": "rem",
+    "count": 2,
+    "defaults": [
+      "",
+      ""
+    ],
+    "fields": [
+      "Dividend",
+      "Divisor"
+    ]
+  },
+  {
+    "category": "Algebra",
+    "title": "Polynomial quotient",
+    "command": "quo",
+    "count": 2,
+    "defaults": [
+      "",
+      ""
+    ],
+    "fields": [
+      "Dividend",
+      "Divisor"
+    ]
+  },
+  {
+    "category": "Algebra",
+    "title": "Coefficient of a power",
+    "command": "coeff",
+    "count": 3,
+    "defaults": [
+      "",
+      "x",
+      "2"
+    ],
+    "fields": [
+      "Polynomial",
+      "Variable",
+      "Power"
+    ]
+  },
+  {
+    "category": "Solve",
+    "title": "Solve an equation",
+    "command": "solve",
+    "count": 2,
+    "defaults": [
+      "",
+      "x"
+    ],
+    "fields": [
+      "Equation",
+      "Variable"
+    ]
+  },
+  {
+    "category": "Solve",
+    "title": "Numerical solution",
+    "command": "fsolve",
+    "count": 2,
+    "defaults": [
+      "",
+      "x=1.0"
+    ],
+    "fields": [
+      "Equation",
+      "Variable = initial guess"
+    ]
+  },
+  {
+    "category": "Solve",
+    "title": "Complex solutions",
+    "command": "csolve",
+    "count": 2,
+    "defaults": [
+      "",
+      "x"
+    ],
+    "fields": [
+      "Equation",
+      "Variable"
+    ]
+  },
+  {
+    "category": "Solve",
+    "title": "Simultaneous equations",
+    "command": "linsolve",
+    "count": 2,
+    "defaults": [
+      "[x+y=3,x-y=1]",
+      "[x,y]"
+    ],
+    "fields": [
+      "Equations in a list",
+      "Variables in a list"
+    ]
+  },
+  {
+    "category": "Solve",
+    "title": "Polynomial roots (decimal)",
+    "command": "proot",
+    "count": 1,
+    "defaults": [
+      ""
+    ],
+    "fields": [
+      "Polynomial"
+    ]
+  },
+  {
+    "category": "Calculus",
+    "title": "Differentiate",
+    "command": "diff",
+    "count": 2,
+    "defaults": [
+      "",
+      "x"
+    ],
+    "fields": [
+      "Expression",
+      "Variable"
+    ]
+  },
+  {
+    "category": "Calculus",
+    "title": "Nth derivative",
+    "command": "diff",
+    "count": 3,
+    "defaults": [
+      "",
+      "x",
+      "2"
+    ],
+    "fields": [
+      "Expression",
+      "Variable",
+      "Order"
+    ]
+  },
+  {
+    "category": "Calculus",
+    "title": "Indefinite integral",
+    "command": "integrate",
+    "count": 2,
+    "defaults": [
+      "",
+      "x"
+    ],
+    "fields": [
+      "Integrand",
+      "Variable"
+    ]
+  },
+  {
+    "category": "Calculus",
+    "title": "Definite integral",
+    "command": "integrate",
+    "count": 4,
+    "defaults": [
+      "",
+      "x",
+      "0",
+      "1"
+    ],
+    "fields": [
+      "Integrand",
+      "Variable",
+      "Lower limit",
+      "Upper limit"
+    ]
+  },
+  {
+    "category": "Calculus",
+    "title": "Limit",
+    "command": "limit",
+    "count": 2,
+    "defaults": [
+      "",
+      "x=0"
+    ],
+    "fields": [
+      "Expression",
+      "Variable = approach value"
+    ]
+  },
+  {
+    "category": "Calculus",
+    "title": "Taylor / Maclaurin series",
+    "command": "taylor",
+    "count": 3,
+    "defaults": [
+      "",
+      "x=0",
+      "5"
+    ],
+    "fields": [
+      "Expression",
+      "Variable = centre",
+      "Order"
+    ]
+  },
+  {
+    "category": "Calculus",
+    "title": "Sum a sequence",
+    "command": "sum",
+    "count": 4,
+    "defaults": [
+      "",
+      "k",
+      "1",
+      "n"
+    ],
+    "fields": [
+      "Term",
+      "Index",
+      "First index",
+      "Last index"
+    ]
+  },
+  {
+    "category": "Calculus",
+    "title": "Product of a sequence",
+    "command": "product",
+    "count": 4,
+    "defaults": [
+      "",
+      "k",
+      "1",
+      "n"
+    ],
+    "fields": [
+      "Term",
+      "Index",
+      "First index",
+      "Last index"
+    ]
+  },
+  {
+    "category": "Calculus",
+    "title": "Differential equation",
+    "command": "desolve",
+    "count": 3,
+    "defaults": [
+      "y'=2*y",
+      "x",
+      "y"
+    ],
+    "fields": [
+      "Equation or list with initial conditions",
+      "Independent variable",
+      "Dependent variable"
+    ]
+  },
+  {
+    "category": "Calculus",
+    "title": "Recurrence relation",
+    "command": "rsolve",
+    "count": 3,
+    "defaults": [
+      "u(n+1)=2*u(n)+3",
+      "u(n)",
+      "u(0)=1"
+    ],
+    "fields": [
+      "Recurrence",
+      "Sequence",
+      "Initial condition"
+    ]
+  },
+  {
+    "category": "Matrices",
+    "title": "Determinant",
+    "command": "det",
+    "count": 1,
+    "defaults": [
+      ""
+    ],
+    "fields": [
+      "Matrix"
+    ]
+  },
+  {
+    "category": "Matrices",
+    "title": "Inverse",
+    "command": "inv",
+    "count": 1,
+    "defaults": [
+      ""
+    ],
+    "fields": [
+      "Matrix"
+    ]
+  },
+  {
+    "category": "Matrices",
+    "title": "Transpose",
+    "command": "tran",
+    "count": 1,
+    "defaults": [
+      ""
+    ],
+    "fields": [
+      "Matrix"
+    ]
+  },
+  {
+    "category": "Matrices",
+    "title": "Reduced row echelon form",
+    "command": "rref",
+    "count": 1,
+    "defaults": [
+      ""
+    ],
+    "fields": [
+      "Matrix"
+    ]
+  },
+  {
+    "category": "Matrices",
+    "title": "Rank",
+    "command": "rank",
+    "count": 1,
+    "defaults": [
+      ""
+    ],
+    "fields": [
+      "Matrix"
+    ]
+  },
+  {
+    "category": "Matrices",
+    "title": "Eigenvalues",
+    "command": "eigenvals",
+    "count": 1,
+    "defaults": [
+      ""
+    ],
+    "fields": [
+      "Matrix"
+    ]
+  },
+  {
+    "category": "Matrices",
+    "title": "Eigenvectors",
+    "command": "eigenvects",
+    "count": 1,
+    "defaults": [
+      ""
+    ],
+    "fields": [
+      "Matrix"
+    ]
+  },
+  {
+    "category": "Matrices",
+    "title": "Identity matrix",
+    "command": "idn",
+    "count": 1,
+    "defaults": [
+      "3"
+    ],
+    "fields": [
+      "Order"
+    ]
+  },
+  {
+    "category": "Matrices",
+    "title": "Characteristic polynomial",
+    "command": "charpoly",
+    "count": 2,
+    "defaults": [
+      "",
+      "x"
+    ],
+    "fields": [
+      "Matrix",
+      "Variable"
+    ]
+  },
+  {
+    "category": "Matrices",
+    "title": "LU decomposition",
+    "command": "lu",
+    "count": 1,
+    "defaults": [
+      ""
+    ],
+    "fields": [
+      "Matrix"
+    ]
+  },
+  {
+    "category": "Vectors",
+    "title": "Scalar / dot product",
+    "command": "dot",
+    "count": 2,
+    "defaults": [
+      "[1,2,3]",
+      "[4,5,6]"
+    ],
+    "fields": [
+      "First vector",
+      "Second vector"
+    ]
+  },
+  {
+    "category": "Vectors",
+    "title": "Vector / cross product",
+    "command": "cross",
+    "count": 2,
+    "defaults": [
+      "[1,2,3]",
+      "[4,5,6]"
+    ],
+    "fields": [
+      "First vector",
+      "Second vector"
+    ]
+  },
+  {
+    "category": "Vectors",
+    "title": "Magnitude",
+    "command": "l2norm",
+    "count": 1,
+    "defaults": [
+      "[1,2,3]"
+    ],
+    "fields": [
+      "Vector"
+    ]
+  },
+  {
+    "category": "Complex",
+    "title": "Real part",
+    "command": "re",
+    "count": 1,
+    "defaults": [
+      ""
+    ],
+    "fields": [
+      "Complex number"
+    ]
+  },
+  {
+    "category": "Complex",
+    "title": "Imaginary part",
+    "command": "im",
+    "count": 1,
+    "defaults": [
+      ""
+    ],
+    "fields": [
+      "Complex number"
+    ]
+  },
+  {
+    "category": "Complex",
+    "title": "Modulus",
+    "command": "abs",
+    "count": 1,
+    "defaults": [
+      ""
+    ],
+    "fields": [
+      "Complex number"
+    ]
+  },
+  {
+    "category": "Complex",
+    "title": "Argument",
+    "command": "arg",
+    "count": 1,
+    "defaults": [
+      ""
+    ],
+    "fields": [
+      "Complex number"
+    ]
+  },
+  {
+    "category": "Complex",
+    "title": "Conjugate",
+    "command": "conj",
+    "count": 1,
+    "defaults": [
+      ""
+    ],
+    "fields": [
+      "Complex number"
+    ]
+  },
+  {
+    "category": "Complex",
+    "title": "Factor over complex numbers",
+    "command": "cfactor",
+    "count": 1,
+    "defaults": [
+      ""
+    ],
+    "fields": [
+      "Polynomial"
+    ]
+  },
+  {
+    "category": "Probability",
+    "title": "Binomial probability P(X=k)",
+    "command": "binomial",
+    "count": 3,
+    "defaults": [
+      "10",
+      "1/2",
+      "3"
+    ],
+    "fields": [
+      "Trials n",
+      "Success probability p",
+      "Successes k"
+    ]
+  },
+  {
+    "category": "Probability",
+    "title": "Binomial cumulative P(X<=k)",
+    "command": "binomial_cdf",
+    "count": 3,
+    "defaults": [
+      "10",
+      "1/2",
+      "3"
+    ],
+    "fields": [
+      "Trials n",
+      "Success probability p",
+      "Upper count k"
+    ]
+  },
+  {
+    "category": "Probability",
+    "title": "Normal cumulative P(X<=a)",
+    "command": "normald_cdf",
+    "count": 3,
+    "defaults": [
+      "0",
+      "1",
+      "1.96"
+    ],
+    "fields": [
+      "Mean",
+      "Standard deviation",
+      "Upper value a"
+    ]
+  },
+  {
+    "category": "Probability",
+    "title": "Normal interval probability",
+    "command": "normald_cdf",
+    "count": 4,
+    "defaults": [
+      "0",
+      "1",
+      "-1.96",
+      "1.96"
+    ],
+    "fields": [
+      "Mean",
+      "Standard deviation",
+      "Lower value",
+      "Upper value"
+    ]
+  },
+  {
+    "category": "Probability",
+    "title": "Inverse normal (quantile)",
+    "command": "normald_icdf",
+    "count": 3,
+    "defaults": [
+      "0",
+      "1",
+      "0.975"
+    ],
+    "fields": [
+      "Mean",
+      "Standard deviation",
+      "Cumulative probability"
+    ]
+  },
+  {
+    "category": "Probability",
+    "title": "Poisson probability",
+    "command": "poisson",
+    "count": 2,
+    "defaults": [
+      "3",
+      "2"
+    ],
+    "fields": [
+      "Mean lambda",
+      "Count k"
+    ]
+  },
+  {
+    "category": "Probability",
+    "title": "Poisson cumulative",
+    "command": "poisson_cdf",
+    "count": 2,
+    "defaults": [
+      "3",
+      "2"
+    ],
+    "fields": [
+      "Mean lambda",
+      "Upper count k"
+    ]
+  },
+  {
+    "category": "Probability",
+    "title": "Combinations n choose r",
+    "command": "comb",
+    "count": 2,
+    "defaults": [
+      "10",
+      "3"
+    ],
+    "fields": [
+      "n",
+      "r"
+    ]
+  },
+  {
+    "category": "Statistics",
+    "title": "Mean",
+    "command": "mean",
+    "count": 1,
+    "defaults": [
+      "[2,4,6,8]"
+    ],
+    "fields": [
+      "Data list"
+    ]
+  },
+  {
+    "category": "Statistics",
+    "title": "Median",
+    "command": "median",
+    "count": 1,
+    "defaults": [
+      "[2,4,6,8]"
+    ],
+    "fields": [
+      "Data list"
+    ]
+  },
+  {
+    "category": "Statistics",
+    "title": "Population standard deviation",
+    "command": "stddev",
+    "count": 1,
+    "defaults": [
+      "[2,4,6,8]"
+    ],
+    "fields": [
+      "Data list"
+    ]
+  },
+  {
+    "category": "Statistics",
+    "title": "Sample standard deviation",
+    "command": "stddevp",
+    "count": 1,
+    "defaults": [
+      "[2,4,6,8]"
+    ],
+    "fields": [
+      "Data list"
+    ]
+  },
+  {
+    "category": "Statistics",
+    "title": "Linear regression",
+    "command": "linear_regression",
+    "count": 2,
+    "defaults": [
+      "[1,2,3,4]",
+      "[2,4,5,8]"
+    ],
+    "fields": [
+      "x data list",
+      "y data list"
+    ]
+  },
+  {
+    "category": "Number",
+    "title": "Greatest common divisor",
+    "command": "gcd",
+    "count": 2,
+    "defaults": [
+      "",
+      ""
+    ],
+    "fields": [
+      "First integer / polynomial",
+      "Second integer / polynomial"
+    ]
+  },
+  {
+    "category": "Number",
+    "title": "Lowest common multiple",
+    "command": "lcm",
+    "count": 2,
+    "defaults": [
+      "",
+      ""
+    ],
+    "fields": [
+      "First integer / polynomial",
+      "Second integer / polynomial"
+    ]
+  },
+  {
+    "category": "Number",
+    "title": "Prime factorisation",
+    "command": "ifactor",
+    "count": 1,
+    "defaults": [
+      ""
+    ],
+    "fields": [
+      "Integer"
+    ]
+  },
+  {
+    "category": "Number",
+    "title": "Primality test",
+    "command": "isprime",
+    "count": 1,
+    "defaults": [
+      ""
+    ],
+    "fields": [
+      "Integer"
+    ]
+  },
+  {
+    "category": "Number",
+    "title": "Integer remainder",
+    "command": "irem",
+    "count": 2,
+    "defaults": [
+      "",
+      ""
+    ],
+    "fields": [
+      "Dividend",
+      "Divisor"
+    ]
+  },
+  {
+    "category": "Graphs",
+    "title": "Plot y = f(x)",
+    "command": "plot",
+    "count": 4,
+    "defaults": [
+      "",
+      "x",
+      "-10",
+      "10"
+    ],
+    "fields": [
+      "Expression",
+      "Variable",
+      "x minimum",
+      "x maximum"
+    ]
+  },
+  {
+    "category": "Graphs",
+    "title": "Parametric curve",
+    "command": "plotparam",
+    "count": 2,
+    "defaults": [
+      "[cos(t),sin(t)]",
+      "t=0..2*pi"
+    ],
+    "fields": [
+      "[x(t),y(t)]",
+      "Parameter interval"
+    ]
+  },
+  {
+    "category": "Graphs",
+    "title": "Polar curve",
+    "command": "plotpolar",
+    "count": 2,
+    "defaults": [
+      "1+cos(t)",
+      "t=0..2*pi"
+    ],
+    "fields": [
+      "Radius function",
+      "Angle interval"
+    ]
+  },
+  {
+    "category": "Graphs",
+    "title": "Implicit curve",
+    "command": "plotimplicit",
+    "count": 3,
+    "defaults": [
+      "x^2+y^2=4",
+      "x=-3..3",
+      "y=-3..3"
+    ],
+    "fields": [
+      "Equation",
+      "x interval",
+      "y interval"
+    ]
+  },
+  {
+    "category": "Graphs",
+    "title": "3D surface",
+    "command": "plotfunc",
+    "count": 2,
+    "defaults": [
+      "x^2-y^2",
+      "[x=-3..3,y=-3..3]"
+    ],
+    "fields": [
+      "Expression",
+      "Domain"
+    ]
+  },
+  {
+    "category": "Further maths",
+    "title": "Stationary x coordinates",
+    "command": "solve",
+    "count": 2,
+    "defaults": [
+      "diff(x^3-3*x,x)=0",
+      "x"
+    ],
+    "fields": [
+      "Derivative = 0",
+      "Variable"
+    ]
+  },
+  {
+    "category": "Further maths",
+    "title": "Roots of unity",
+    "command": "csolve",
+    "count": 2,
+    "defaults": [
+      "z^4=1",
+      "z"
+    ],
+    "fields": [
+      "Equation",
+      "Variable"
+    ]
+  },
+  {
+    "category": "Further maths",
+    "title": "Hyperbolic sine",
+    "command": "sinh",
+    "count": 1,
+    "defaults": [
+      ""
+    ],
+    "fields": [
+      "Argument"
+    ]
+  },
+  {
+    "category": "Further maths",
+    "title": "Hyperbolic cosine",
+    "command": "cosh",
+    "count": 1,
+    "defaults": [
+      ""
+    ],
+    "fields": [
+      "Argument"
+    ]
+  },
+  {
+    "category": "Further maths",
+    "title": "Hyperbolic tangent",
+    "command": "tanh",
+    "count": 1,
+    "defaults": [
+      ""
+    ],
+    "fields": [
+      "Argument"
+    ]
+  }
+]

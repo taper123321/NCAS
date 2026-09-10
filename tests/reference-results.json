@@ -1,0 +1,595 @@
+{
+  "engine": "Upstream Giac JavaScript reference; not the CG50 binary",
+  "results": [
+    {
+      "input": "1/2+1/6",
+      "expected": "2/3",
+      "actual": "2/3",
+      "pass": true
+    },
+    {
+      "input": "sin(30)",
+      "expected": "1/2",
+      "actual": "1/2",
+      "pass": true
+    },
+    {
+      "input": "det([[1,2],[3,4]])",
+      "expected": "-2",
+      "actual": "-2",
+      "pass": true
+    },
+    {
+      "input": "inv([[1,2],[3,4]])",
+      "expected": "[[-2,1],[3/2,-1/2]]",
+      "actual": "[[-2,1],[3/2,-1/2]]",
+      "pass": true
+    },
+    {
+      "input": "[[1,2],[3,4]]*[[2,0],[1,2]]",
+      "expected": "[[4,4],[10,8]]",
+      "actual": "[[4,4],[10,8]]",
+      "pass": true
+    },
+    {
+      "input": "binomial(10,1/2,3)",
+      "expected": "15/128",
+      "actual": "15/128",
+      "pass": true
+    },
+    {
+      "input": "binomial_cdf(10,1/2,3)",
+      "expected": "11/64",
+      "actual": "11/64",
+      "pass": true
+    },
+    {
+      "input": "dot([1,2,3],[4,5,6])",
+      "expected": "32",
+      "actual": "32",
+      "pass": true
+    },
+    {
+      "input": "cross([1,2,3],[4,5,6])",
+      "expected": "[-3,6,-3]",
+      "actual": "[-3,6,-3]",
+      "pass": true
+    },
+    {
+      "input": "diff(x^3-3*x,x)",
+      "expected": "3*x^2-3",
+      "actual": "3*x^2-3",
+      "pass": true
+    },
+    {
+      "input": "integrate(x^2,x,0,3)",
+      "expected": "9",
+      "actual": "9",
+      "pass": true
+    },
+    {
+      "input": "solve(x^2-5*x+6=0,x)",
+      "expected": "list[2,3]",
+      "actual": "list[2,3]",
+      "pass": true
+    },
+    {
+      "input": "coeff(x^3+2*x^2,x,2)",
+      "expected": "2",
+      "actual": "2",
+      "pass": true
+    },
+    {
+      "input": "charpoly([[1,2],[3,4]],x)",
+      "expected": "x^2-5*x-2",
+      "actual": "x^2-5*x-2",
+      "pass": true
+    },
+    {
+      "input": "limit(sin(x)/x,x=0)",
+      "expected": "1",
+      "actual": "1",
+      "pass": true
+    },
+    {
+      "original": "1/2+1/6",
+      "serialised": "((1)/(2))+((1)/(6))",
+      "expected": "2/3",
+      "actual": "2/3",
+      "pass": true
+    },
+    {
+      "original": "-x^2",
+      "serialised": "-((x)^(2))",
+      "expected": "-x^2",
+      "actual": "-x^2",
+      "pass": true
+    },
+    {
+      "original": "x^-2",
+      "serialised": "((x)^(-2))",
+      "expected": "1/x^2",
+      "actual": "1/x^2",
+      "pass": true
+    },
+    {
+      "original": "x^2^3",
+      "serialised": "((x)^(((2)^(3))))",
+      "expected": "x^8",
+      "actual": "x^8",
+      "pass": true
+    },
+    {
+      "original": "(x+1)/(x-1)",
+      "serialised": "(((x+1))/((x-1)))",
+      "expected": "(x+1)/(x-1)",
+      "actual": "(x+1)/(x-1)",
+      "pass": true
+    },
+    {
+      "original": "sqrt(2)",
+      "serialised": "sqrt(2)",
+      "expected": "√2",
+      "actual": "√2",
+      "pass": true
+    },
+    {
+      "original": "[[1,2],[3,4]]",
+      "serialised": "[[1,2],[3,4]]",
+      "expected": "[[1,2],[3,4]]",
+      "actual": "[[1,2],[3,4]]",
+      "pass": true
+    },
+    {
+      "original": "det([[1,2],[3,4]])",
+      "serialised": "det([[1,2],[3,4]])",
+      "expected": "-2",
+      "actual": "-2",
+      "pass": true
+    },
+    {
+      "original": "sin(30)",
+      "serialised": "sin(30)",
+      "expected": "sin(30)",
+      "actual": "sin(30)",
+      "pass": true
+    },
+    {
+      "original": "2*x+3",
+      "serialised": "2*x+3",
+      "expected": "2*x+3",
+      "actual": "2*x+3",
+      "pass": true
+    },
+    {
+      "original": "[1,2,3]",
+      "serialised": "[1,2,3]",
+      "expected": "[1,2,3]",
+      "actual": "[1,2,3]",
+      "pass": true
+    },
+    {
+      "original": "normald_cdf(0,1,-1.96,1.96)",
+      "serialised": "normald_cdf(0,1,-1.96,1.96)",
+      "expected": "0.950004209704",
+      "actual": "0.950004209704",
+      "pass": true
+    },
+    {
+      "input": "ncas_a:=2",
+      "expected": "2",
+      "actual": "2",
+      "pass": true
+    },
+    {
+      "input": "ncas_a*3",
+      "expected": "6",
+      "actual": "6",
+      "pass": true
+    },
+    {
+      "input": "ans()+ncas_a",
+      "expected": "8",
+      "actual": "8",
+      "pass": true
+    },
+    {
+      "input": "ncas_a:=4",
+      "expected": "4",
+      "actual": "4",
+      "pass": true
+    },
+    {
+      "input": "ncas_a*3",
+      "expected": "12",
+      "actual": "12",
+      "pass": true
+    },
+    {
+      "input": "ans()+ncas_a",
+      "expected": "16",
+      "actual": "16",
+      "pass": true
+    },
+    {
+      "input": "5*5/2",
+      "expected": "25/2",
+      "actual": "25/2",
+      "pass": true
+    },
+    {
+      "input": "(5/5)",
+      "expected": "1",
+      "actual": "1",
+      "pass": true
+    },
+    {
+      "input": "normal(1/sqrt(2))",
+      "expected": "√2/2",
+      "actual": "√2/2",
+      "pass": true
+    },
+    {
+      "input": "normal(1/(1+sqrt(2)))",
+      "expected": "√2-1",
+      "actual": "√2-1",
+      "pass": true
+    },
+    {
+      "input": "normal(surd(8,3))",
+      "expected": "2",
+      "actual": "2",
+      "pass": true
+    },
+    {
+      "input": "simplify(e^x-exp(x))",
+      "expected": "0",
+      "actual": "0",
+      "pass": true
+    },
+    {
+      "input": "arg(1+i)",
+      "expected": "45.0",
+      "actual": "45.0",
+      "pass": true
+    },
+    {
+      "input": "arg(1+i)",
+      "expected": "pi/4",
+      "actual": "pi/4",
+      "pass": true
+    }
+  ],
+  "catalogue": [
+    {
+      "title": "Simplify",
+      "input": "simplify(x^2-1)",
+      "result": "x^2-1"
+    },
+    {
+      "title": "Expand brackets",
+      "input": "expand(x^2-1)",
+      "result": "x^2-1"
+    },
+    {
+      "title": "Factorise",
+      "input": "factor(x^2-1)",
+      "result": "(x-1)*(x+1)"
+    },
+    {
+      "title": "Partial fractions",
+      "input": "partfrac(x^2-1,x)",
+      "result": "x^2-1"
+    },
+    {
+      "title": "Collect powers",
+      "input": "collect(x^2-1,x)",
+      "result": "x*x-1"
+    },
+    {
+      "title": "Substitute a value",
+      "input": "subst(x^2-1,x,2)",
+      "result": "3"
+    },
+    {
+      "title": "Polynomial remainder",
+      "input": "rem(x^2-1,2)",
+      "result": "0"
+    },
+    {
+      "title": "Polynomial quotient",
+      "input": "quo(x^2-1,2)",
+      "result": "(x^2-1)/2"
+    },
+    {
+      "title": "Coefficient of a power",
+      "input": "coeff(x^2-1,x,2)",
+      "result": "1"
+    },
+    {
+      "title": "Solve an equation",
+      "input": "solve(x^2-1=0,x)",
+      "result": "list[-1,1]"
+    },
+    {
+      "title": "Numerical solution",
+      "input": "fsolve(x^2-1=0,x=1.0)",
+      "result": "1.0"
+    },
+    {
+      "title": "Complex solutions",
+      "input": "csolve(x^2-1=0,x)",
+      "result": "list[-1,1]"
+    },
+    {
+      "title": "Simultaneous equations",
+      "input": "linsolve([x+y=3,x-y=1],[x,y])",
+      "result": "[2,1]"
+    },
+    {
+      "title": "Polynomial roots (decimal)",
+      "input": "proot(x^2-1)",
+      "result": "[-1.0,1.0]"
+    },
+    {
+      "title": "Differentiate",
+      "input": "diff(x^2-1,x)",
+      "result": "2*x"
+    },
+    {
+      "title": "Nth derivative",
+      "input": "diff(x^2-1,x,2)",
+      "result": "2"
+    },
+    {
+      "title": "Indefinite integral",
+      "input": "integrate(x^2-1,x)",
+      "result": "x^3/3-x"
+    },
+    {
+      "title": "Definite integral",
+      "input": "integrate(x^2-1,x,0,1)",
+      "result": "-2/3"
+    },
+    {
+      "title": "Limit",
+      "input": "limit(x^2-1,x=0)",
+      "result": "-1"
+    },
+    {
+      "title": "Taylor / Maclaurin series",
+      "input": "taylor(x^2-1,x=0,5)",
+      "result": "-1+x^2"
+    },
+    {
+      "title": "Sum a sequence",
+      "input": "sum(x^2-1,k,1,n)",
+      "result": "-x^2+1+(x^2-1)*(n+1)"
+    },
+    {
+      "title": "Product of a sequence",
+      "input": "product(x^2-1,k,1,n)",
+      "result": "(x^2-1)^n"
+    },
+    {
+      "title": "Differential equation",
+      "input": "desolve(y'=2*y,x,y)",
+      "result": "c_0*exp(2*x)"
+    },
+    {
+      "title": "Recurrence relation",
+      "input": "rsolve(u(n+1)=2*u(n)+3,u(n),u(0)=1)",
+      "result": "[4*2^n-3]"
+    },
+    {
+      "title": "Determinant",
+      "input": "det([[1,2],[3,4]])",
+      "result": "-2"
+    },
+    {
+      "title": "Inverse",
+      "input": "inv([[1,2],[3,4]])",
+      "result": "[[-2,1],[3/2,-1/2]]"
+    },
+    {
+      "title": "Transpose",
+      "input": "tran([[1,2],[3,4]])",
+      "result": "matrix[[1,3],[2,4]]"
+    },
+    {
+      "title": "Reduced row echelon form",
+      "input": "rref([[1,2],[3,4]])",
+      "result": "[[1,0],[0,1]]"
+    },
+    {
+      "title": "Rank",
+      "input": "rank([[1,2],[3,4]])",
+      "result": "2"
+    },
+    {
+      "title": "Eigenvalues",
+      "input": "eigenvals([[1,2],[3,4]])",
+      "result": "(√33+5)/2,(-√33+5)/2"
+    },
+    {
+      "title": "Eigenvectors",
+      "input": "eigenvects([[1,2],[3,4]])",
+      "result": "[[√33-3,-√33-3],[6,6]]"
+    },
+    {
+      "title": "Identity matrix",
+      "input": "idn(3)",
+      "result": "matrix[[1,0,0],[0,1,0],[0,0,1]]"
+    },
+    {
+      "title": "Characteristic polynomial",
+      "input": "charpoly([[1,2],[3,4]],x)",
+      "result": "x^2-5*x-2"
+    },
+    {
+      "title": "LU decomposition",
+      "input": "lu([[1,2],[3,4]])",
+      "result": "[0,1],[[1,0],[3,1]],[[1,2],[0,-2]]"
+    },
+    {
+      "title": "Scalar / dot product",
+      "input": "dot([1,2,3],[4,5,6])",
+      "result": "32"
+    },
+    {
+      "title": "Vector / cross product",
+      "input": "cross([1,2,3],[4,5,6])",
+      "result": "[-3,6,-3]"
+    },
+    {
+      "title": "Magnitude",
+      "input": "l2norm([1,2,3])",
+      "result": "√14"
+    },
+    {
+      "title": "Real part",
+      "input": "re(x^2-1)",
+      "result": "x^2-1"
+    },
+    {
+      "title": "Imaginary part",
+      "input": "im(x^2-1)",
+      "result": "0"
+    },
+    {
+      "title": "Modulus",
+      "input": "abs(x^2-1)",
+      "result": "abs(x^2-1)"
+    },
+    {
+      "title": "Argument",
+      "input": "arg(x^2-1)",
+      "result": "(1-sign(x^2-1))*pi/2"
+    },
+    {
+      "title": "Conjugate",
+      "input": "conj(x^2-1)",
+      "result": "x^2-1"
+    },
+    {
+      "title": "Factor over complex numbers",
+      "input": "cfactor(x^2-1)",
+      "result": "(x-1)*(x+1)"
+    },
+    {
+      "title": "Binomial probability P(X=k)",
+      "input": "binomial(10,1/2,3)",
+      "result": "15/128"
+    },
+    {
+      "title": "Binomial cumulative P(X<=k)",
+      "input": "binomial_cdf(10,1/2,3)",
+      "result": "11/64"
+    },
+    {
+      "title": "Normal cumulative P(X<=a)",
+      "input": "normald_cdf(0,1,1.96)",
+      "result": "0.975002104852"
+    },
+    {
+      "title": "Normal interval probability",
+      "input": "normald_cdf(0,1,-1.96,1.96)",
+      "result": "0.950004209704"
+    },
+    {
+      "title": "Inverse normal (quantile)",
+      "input": "normald_icdf(0,1,0.975)",
+      "result": "1.95996398454"
+    },
+    {
+      "title": "Poisson probability",
+      "input": "poisson(3,2)",
+      "result": "0.224041807655"
+    },
+    {
+      "title": "Poisson cumulative",
+      "input": "poisson_cdf(3,2)",
+      "result": "0.423190081127"
+    },
+    {
+      "title": "Combinations n choose r",
+      "input": "comb(10,3)",
+      "result": "120"
+    },
+    {
+      "title": "Mean",
+      "input": "mean([2,4,6,8])",
+      "result": "5"
+    },
+    {
+      "title": "Median",
+      "input": "median([2,4,6,8])",
+      "result": "4.0"
+    },
+    {
+      "title": "Population standard deviation",
+      "input": "stddev([2,4,6,8])",
+      "result": "√5"
+    },
+    {
+      "title": "Sample standard deviation",
+      "input": "stddevp([2,4,6,8])",
+      "result": "2*√15/3"
+    },
+    {
+      "title": "Linear regression",
+      "input": "linear_regression([1,2,3,4],[2,4,5,8])",
+      "result": "19/10,0"
+    },
+    {
+      "title": "Greatest common divisor",
+      "input": "gcd(x^2-1,2)",
+      "result": "1"
+    },
+    {
+      "title": "Lowest common multiple",
+      "input": "lcm(x^2-1,2)",
+      "result": "2*(x^2-1)"
+    },
+    {
+      "title": "Prime factorisation",
+      "input": "ifactor(12)",
+      "result": "2^2*3"
+    },
+    {
+      "title": "Primality test",
+      "input": "isprime(12)",
+      "result": "false"
+    },
+    {
+      "title": "Integer remainder",
+      "input": "irem(x^2-1,2)",
+      "result": "x^2+1"
+    },
+    {
+      "title": "Stationary x coordinates",
+      "input": "solve(diff(x^3-3*x,x)=0,x)",
+      "result": "list[-1,1]"
+    },
+    {
+      "title": "Roots of unity",
+      "input": "csolve(z^4=1,z)",
+      "result": "list[-1,1,i,-i]"
+    },
+    {
+      "title": "Hyperbolic sine",
+      "input": "sinh(x^2-1)",
+      "result": "sinh(x^2-1)"
+    },
+    {
+      "title": "Hyperbolic cosine",
+      "input": "cosh(x^2-1)",
+      "result": "cosh(x^2-1)"
+    },
+    {
+      "title": "Hyperbolic tangent",
+      "input": "tanh(x^2-1)",
+      "result": "tanh(x^2-1)"
+    }
+  ]
+}

@@ -1,0 +1,22 @@
+[
+  {
+    "input": "plot(x^2,x,-10,10)",
+    "pass": true,
+    "bytes": 6274
+  },
+  {
+    "input": "plotparam([cos(t),sin(t)],t=0..2*pi)",
+    "pass": true,
+    "bytes": 7989
+  },
+  {
+    "input": "plotpolar(1+cos(t),t=0..2*pi)",
+    "pass": true,
+    "bytes": 7868
+  },
+  {
+    "input": "plotimplicit(x^2+y^2=4,x=-3..3,y=-3..3)",
+    "pass": true,
+    "bytes": 3803
+  }
+]
